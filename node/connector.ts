@@ -1,3 +1,4 @@
+import { VBase } from '@vtex/api'
 import {
   AuthorizationRequest,
   AuthorizationResponse,
@@ -10,12 +11,11 @@ import {
   Refunds,
   SettlementRequest,
   SettlementResponse,
-  Settlements,
+  Settlements
 } from '@vtex/payment-provider'
-import { VBase } from '@vtex/api'
-
-import { randomString } from './utils'
 import { executeAuthorization } from './flow'
+import { randomString } from './utils'
+
 
 const authorizationsBucket = 'authorizations'
 const persistAuthorizationResponse = async (
@@ -33,7 +33,7 @@ const getPersistedAuthorizationResponse = async (
     true
   )
 
-export default class TestSuiteApprover extends PaymentProvider {
+export default class ConectorExample extends PaymentProvider {
   // This class needs modifications to pass the test suit.
   // Refer to https://help.vtex.com/en/tutorial/payment-provider-protocol#4-testing
   // in order to learn about the protocol and make the according changes.
