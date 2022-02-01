@@ -81,7 +81,11 @@ export default class ConectorExample extends PaymentProvider {
 
   public async refund(refund: RefundRequest): Promise<RefundResponse> {
     if (this.isTestSuite) {
-      return Refunds.deny(refund)
+      //return Refunds.deny(refund)
+      return Refunds.approve(refund,{
+        refundId: randomString(),
+        code: 'approved'
+      })
     }
 
     throw new Error('Not implemented')
@@ -91,7 +95,11 @@ export default class ConectorExample extends PaymentProvider {
     settlement: SettlementRequest
   ): Promise<SettlementResponse> {
     if (this.isTestSuite) {
-      return Settlements.deny(settlement)
+      //return Settlements.deny(settlement)
+      return Settlements.approve(settlement,{
+        settleId: randomString(),
+        code: 'refund-manually',
+      })
     }
 
     throw new Error('Not implemented')
